@@ -1,0 +1,53 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Hello World</title>
+</head>
+<script src="pixi.js"></script>
+<body>
+<script type="text/javascript">
+    //    PIXI.utils.sayHello(type);
+
+    //Create the renderer
+    var renderer = PIXI.autoDetectRenderer(1024, 768);
+
+    //Add the canvas to the HTML document
+    document.body.appendChild(renderer.view);
+
+    //Create a container object called the `stage`
+    var stage = new PIXI.Container();
+
+    //Use Pixi's built-in `loader` object to load an image
+    PIXI.loader
+        .add("grass.png")
+        .load(setup);
+
+    //This `setup` function will run when the image has loaded
+    function setup() {
+
+        //Create the `cat` sprite from the texture
+        var cat = new PIXI.Sprite(
+            PIXI.loader.resources["grass.png"].texture
+        );
+
+        //Add the cat to the stage
+        stage.addChild(cat);
+
+        //Render the stage
+        renderer.render(stage);
+    }
+
+    //
+    //    renderer.view.style.border = "1px dashed black";
+    //    renderer.backgroundColor = 0x061639;
+    //
+    //    var texture = PIXI.utils.TextureCache["grass.png"];
+    //    var sprite = new PIXI.Sprite(texture);
+    //
+    //
+    //    //Tell the `renderer` to `render` the `stage`
+    //    renderer.render(stage);
+</script>
+</body>
+</html>
